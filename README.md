@@ -15,6 +15,10 @@ The main tutorial file `python_basics.py` covers:
 7. **Matplotlib Basics** - Line plots and bar charts
 8. **Pandas Basics** - DataFrames, data manipulation, and visualization
 
+Additionally, we have Altair examples for interactive visualizations:
+- `altair-samples.py` - Interactive scatter plot example using Altair
+- `altair_setup_guide.md` - Detailed guide for setting up Altair locally
+
 ## Getting Started
 
 ### Prerequisites
@@ -22,7 +26,11 @@ The main tutorial file `python_basics.py` covers:
 To run all sections of this tutorial, you'll need Python 3.6+ and the following packages:
 
 ```bash
+# Basic data science packages
 pip install numpy matplotlib pandas
+
+# For Altair visualizations
+pip install altair vega_datasets
 ```
 
 ### Running the Tutorial
@@ -39,6 +47,52 @@ pip install numpy matplotlib pandas
    ```
 
 3. For the visualization sections (NumPy, Matplotlib, Pandas), uncomment the relevant code blocks in the script.
+
+### Using Altair for Interactive Visualizations
+
+To run the Altair examples:
+
+1. Install the required packages:
+   ```bash
+   pip install altair vega_datasets
+   ```
+
+2. Run the Altair sample script:
+   ```bash
+   python3 altair-samples.py
+   ```
+
+3. View the visualization using one of these methods:
+   
+   **Option 1:** Open the generated HTML file directly in your browser
+   
+   **Option 2:** Use the included web server (recommended):
+   ```bash
+   python3 serve_visualizations.py
+   ```
+   This will start a local web server at http://localhost:8000 and automatically open the visualization in your browser.
+   
+   The enhanced web server now supports:
+   - **Dynamic HTML viewing**: Type any HTML file path in the address bar to view it
+   - **Directory listing**: Navigate to http://localhost:8000/ to see all available files
+   - **HTML file prioritization**: HTML files are listed first for easy access
+   
+   Additional web server options:
+   ```bash
+   # Specify a different port
+   python3 serve_visualizations.py --port 8080
+   
+   # Don't open browser automatically
+   python3 serve_visualizations.py --no-browser
+   
+   # Serve from a specific directory
+   python3 serve_visualizations.py --directory /path/to/visualizations
+   
+   # Specify a default file to open
+   python3 serve_visualizations.py --default-file my_visualization.html
+   ```
+
+For detailed Altair setup instructions and troubleshooting, see the `altair_setup_guide.md` file.
 
 ## Learning Path
 
