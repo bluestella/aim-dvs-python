@@ -24,6 +24,12 @@ print(df_movies_count)
 # Pivot the data for a stacked bar chart
 pivot_df = df_movies_count.pivot(index='first_country', columns='target_ages', values='percent_country').fillna(0)
 
+# Reorder columns to: Kids, Older Kids, Teens, Adults
+desired_order = ['Kids', 'Older Kids', 'Teens', 'Adults']
+# Only include columns that exist in the data
+column_order = [col for col in desired_order if col in pivot_df.columns]
+pivot_df = pivot_df[column_order]
+
 # Plot a horizontal stacked bar chart
 fig, ax = plt.subplots(figsize=(12, 8))
 pivot_df.plot(kind='barh', stacked=True, ax=ax)
@@ -41,9 +47,9 @@ for i, country in enumerate(pivot_df.index):
                    ha='center', va='center', fontweight='bold', fontsize=9, color='#fff')
         cumulative += value
 
-plt.title('Movie Count by First Country and Target Ages')
+plt.title('Target % audience of Netflix TV shows and movies by country.')
 plt.xlabel('Percentage (%)')
-plt.ylabel('First Country')
-plt.legend(title='Target Ages', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.ylabel('Country')
+plt.legend(title='Audience by Target Age Group', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.show()
